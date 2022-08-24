@@ -7,12 +7,15 @@ const zubat = document.querySelector('#zubat');
 const pikaxu = document.querySelector('#pikaxu');
 
 const audio = document.querySelector('audio');
+
+audio.volume = 0.1;
+
 const control = document.querySelector('.music-control');
 
 control.addEventListener('click', (event) => {
-  event.target.src = `${event.target.src}`.includes('on.png') ? '../assets/icons/off.png' : '../assets/icons/on.png';
+  event.target.src = `!${event.target.src}`.includes('on.png') ? '../assets/icons/off.png' : '../assets/icons/on.png';
 
-  `${event.target.src}`.includes('on.png') ? audio.pause() : audio.play();
+  `${event.target.src}`.includes('on.png') ? audio.play() : audio.pause();
 });
 
 
