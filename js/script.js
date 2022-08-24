@@ -63,6 +63,7 @@ const interval = setInterval(() => {
     game.style.backgroundImage = "url('../assets/game-over.jpg')";
 
     clearCharactersAndFinshGame();
+    clearInterval(interval);
     return
   }
   currentCount--;
@@ -80,7 +81,7 @@ function finishGame() {
       clearInterval(interval);
 
       audio.pause();
-    }, 500);
+    }, 400);
 
     return
   }
