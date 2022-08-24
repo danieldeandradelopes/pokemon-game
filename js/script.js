@@ -1,4 +1,5 @@
 const body = document.querySelector('body');
+const game = document.querySelector('.game');
 
 const ash = document.querySelector('#ash');
 
@@ -32,6 +33,16 @@ let findPikaxu = false;
 let findZubat = false;
 
 function verifyLookPokemon(to) {
+  if (findCharmander && findPikaxu && findZubat) {
+    game.style.backgroundImage = "url('../assets/winner.jpg')";
+
+    ash.style.display = 'none';
+    pikaxu.style.display = 'none';
+    charmander.style.display = 'none';
+    zubat.style.display = 'none';
+
+    return
+  }
 
   const pokemonRightPosition = to === 'ArrowLeft' ? `${getRightPosition() - 64}px` : `${getRightPosition() + 64}px`;
 
