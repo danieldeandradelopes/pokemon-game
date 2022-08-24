@@ -41,6 +41,8 @@ function verifyLookPokemon(to) {
     charmander.style.display = 'none';
     zubat.style.display = 'none';
 
+    audio.pause();
+
     return
   }
 
