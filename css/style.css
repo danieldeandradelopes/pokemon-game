@@ -8,6 +8,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   min-height: 100vh;
   font-family: sans-serif;
@@ -25,6 +26,12 @@ body {
   cursor: pointer;
 
   position: absolute;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 64px;
+  font-size: 80px;
 }
 
 .game {
@@ -66,4 +73,22 @@ body {
   width: 65px;
   right: 175px;
   top: 55px;
+}
+
+.restart {
+  display: none;
+
+  width: 100px;
+  height: 100px;
+
+  cursor: pointer;
+
+  position: absolute;
+
+  z-index: 3;
+}
+
+.restart:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
 }

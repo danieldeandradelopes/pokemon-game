@@ -1,6 +1,10 @@
 const body = document.querySelector('body');
 const game = document.querySelector('.game');
 
+const count = document.querySelector('h1');
+
+const restart = document.querySelector('.restart');
+
 const ash = document.querySelector('#ash');
 
 const charmander = document.querySelector('#charmander');
@@ -14,6 +18,9 @@ audio.volume = 0.1;
 const control = document.querySelector('.music-control');
 
 control.addEventListener('click', (event) => {
+
+  event.stopPropagation();
+
   event.target.src = `!${event.target.src}`.includes('on.png') ? '../assets/icons/off.png' : '../assets/icons/on.png';
 
   `${event.target.src}`.includes('on.png') ? audio.play() : audio.pause();
@@ -32,19 +39,54 @@ let findCharmander = false;
 let findPikaxu = false;
 let findZubat = false;
 
-function verifyLookPokemon(to) {
+
+restart.addEventListener('click', () => {
+  window.location.reload();
+  restart.style.display = 'none';
+});
+
+function clearCharactersAndFinshGame() {
+  ash.style.display = 'none';
+  pikaxu.style.display = 'none';
+  charmander.style.display = 'none';
+  zubat.style.display = 'none';
+
+  restart.style.display = 'block';
+
+  count.textContent = '';
+}
+
+let currentCount = 20;
+
+const interval = setInterval(() => {
+  if (currentCount <= 0) {
+    game.style.backgroundImage = "url('../assets/game-over.jpg')";
+
+    clearCharactersAndFinshGame();
+    return
+  }
+  currentCount--;
+  count.textContent = currentCount
+}, 1000);
+
+function finishGame() {
   if (findCharmander && findPikaxu && findZubat) {
-    game.style.backgroundImage = "url('../assets/winner.jpg')";
+    setTimeout(() => {
+      game.style.backgroundImage = "url('../assets/winner.jpg')";
 
-    ash.style.display = 'none';
-    pikaxu.style.display = 'none';
-    charmander.style.display = 'none';
-    zubat.style.display = 'none';
+      clearCharactersAndFinshGame();
 
-    audio.pause();
+      clearInterval(interval);
+
+      audio.pause();
+    }, 500);
 
     return
   }
+}
+
+function verifyLookPokemon(to) {
+  finishGame();
 
   const pokemonRightPosition = to === 'ArrowLeft' ? `${getRightPosition() - 64}px` : `${getRightPosition() + 64}px`;
 
@@ -93,6 +135,8 @@ function verifyLookPokemon(to) {
 }
 
 body.addEventListener('keydown', (event) => {
+
+  event.stopPropagation();
 
   switch (event.code) {
     case 'ArrowLeft':
