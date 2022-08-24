@@ -56,7 +56,7 @@ function clearCharactersAndFinshGame() {
   count.textContent = '';
 }
 
-let currentCount = 20;
+let currentCount = 60;
 
 const interval = setInterval(() => {
   if (currentCount <= 0) {
@@ -71,10 +71,11 @@ const interval = setInterval(() => {
 
 function finishGame() {
   if (findCharmander && findPikaxu && findZubat) {
+    clearCharactersAndFinshGame();
+
     setTimeout(() => {
       game.style.backgroundImage = "url('../assets/winner.jpg')";
 
-      clearCharactersAndFinshGame();
 
       clearInterval(interval);
 
