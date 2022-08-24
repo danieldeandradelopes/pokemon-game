@@ -6,6 +6,15 @@ const charmander = document.querySelector('#charmander');
 const zubat = document.querySelector('#zubat');
 const pikaxu = document.querySelector('#pikaxu');
 
+const audio = document.querySelector('audio');
+const control = document.querySelector('.music-control');
+
+control.addEventListener('click', (event) => {
+  event.target.src = `${event.target.src}`.includes('on.png') ? '../assets/icons/off.png' : '../assets/icons/on.png';
+
+  `${event.target.src}`.includes('on.png') ? audio.pause() : audio.play();
+});
+
 
 function getRightPosition() {
   return parseInt(ash.style.right.split('px')[0]) || 2;
