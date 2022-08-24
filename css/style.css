@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  font-family: sans-serif;
+
+  background-color: black;
+}
+
+.game {
+  background-image: url('../assets/scene.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  width: 1280px;
+  height: 720px;
+
+  position: relative;
+}
+
+.character {
+  position: absolute;
+  width: 75px;
+}
+
+#ash {
+  right: 2px;
+  z-index: 1;
+}
+
+#zubat {
+  display: none;
+  right: 90px;
+  top: 550px;
+}
+
+#pikaxu {
+  display: none;
+  right: 600px;
+  top: 330px;
+}
+
+#charmander {
+  display: none;
+  width: 65px;
+  right: 175px;
+  top: 55px;
+}
